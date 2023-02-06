@@ -6,11 +6,14 @@ import { ModalWindow, Overlay } from './Modal.styled';
 const modalRoot = document.querySelector('#modal-root');
 
 const Modal = ({ close, children }) => {
-  const closeModal = useCallback(({ target, currentTarget, code }) => {
-    if (target === currentTarget || code === 'Escape') {
-      close();
-    }
-  }, []);
+  const closeModal = useCallback(
+    ({ target, currentTarget, code }) => {
+      if (target === currentTarget || code === 'Escape') {
+        close();
+      }
+    },
+    [close]
+  );
 
   useEffect(() => {
     document.addEventListener('keydown', closeModal);
